@@ -4,14 +4,13 @@ import {
   StyleSheet,
   Text,
   FlatList,
-  Button,
   TouchableOpacity,
 } from 'react-native';
 import { Context } from '../context/BlogConext';
 import { Feather } from '@expo/vector-icons';
 
 const Indexscreen = ({ navigation }) => {
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, deleteBlogPost } = useContext(Context);
   return (
     <View>
       <FlatList
