@@ -19,7 +19,14 @@ const CreateScreen = ({ navigation }) => {
         value={content}
         onChangeText={(text) => setContent(text)}
       />
-      <Button title='Add Post' onPress={() => addBlogPost(title, content)} />
+      <Button
+        title='Add Post'
+        onPress={() =>
+          addBlogPost(title, content, () => {
+            navigation.navigate('Index'); // this is a very valuable approach when it comes to saving data comes from outside API
+          })
+        }
+      />
     </View>
   );
 };
