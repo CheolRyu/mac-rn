@@ -1,5 +1,12 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet, Text, FlatList, Button } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  FlatList,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
 import { Context } from '../context/BlogConext';
 import { Feather } from '@expo/vector-icons';
 
@@ -14,8 +21,15 @@ const Indexscreen = () => {
         renderItem={({ item }) => {
           return (
             <View style={styles.row}>
-              <Text style={styles.title}>{item.title}</Text>
-              <Feather name='trash' style={styles.icon} />
+              <Text style={styles.title}>
+                {item.title}, ID: {item.id}
+              </Text>
+              <TouchableOpacity
+                onPress={() => {
+                  console.log(item.id);
+                }}>
+                <Feather name='trash' style={styles.icon} />
+              </TouchableOpacity>
             </View>
           );
         }}
