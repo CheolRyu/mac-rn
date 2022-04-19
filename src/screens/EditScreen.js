@@ -3,15 +3,14 @@ import { StyleSheet } from 'react-native';
 import { Context } from '../context/BlogConext';
 import BlogPostForm from '../components/BlogPostForm';
 const EditScreen = ({ navigation }) => {
-  const { state } = useContext(Context);
-  const blogPost = state.find(
-    (blogPost) => blogPost.id === navigation.getParam('id')
-  ); //like a sql
+  const id = navigation.getParam('id');
+  const { state, editBlogPost } = useContext(Context);
+  const blogPost = state.find((blogPost) => blogPost.id === id); //like a sql
   return (
     <BlogPostForm
       inintialValues={{ title: blogPost.title, content: blogPost.content }}
-      onSubmit={(title, content) => {
-        console.log(title, content);
+      onSubmit={(title, content, id) => {
+        editBlogPost(id, title, content, {() => navigation.navigate('Index')});
       }}
     />
   );

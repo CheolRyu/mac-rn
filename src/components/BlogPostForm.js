@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, Button, TextInput } from 'react-native';
 
-const Blogpostform = ({ onSubmit, inintialValues }) => {
+const BlogPostForm = ({ onSubmit, inintialValues }) => {
   const [title, setTitle] = useState(inintialValues.title);
   const [content, setContent] = useState(inintialValues.content);
   return (
@@ -22,6 +22,12 @@ const Blogpostform = ({ onSubmit, inintialValues }) => {
     </View>
   );
 };
+BlogPostForm.defaultProps = {
+  inintialValues: {
+    title: '',
+    content: '',
+  },
+};
 
 const styles = StyleSheet.create({
   input: {
@@ -39,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Blogpostform;
+export default BlogPostForm;
