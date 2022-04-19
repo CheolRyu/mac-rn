@@ -1,11 +1,19 @@
-import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-
+import React, { useContext } from 'react';
+import { StyleSheet } from 'react-native';
+import { Context } from '../context/BlogConext';
+import BlogPostForm from '../components/BlogPostForm';
 const EditScreen = ({ navigation }) => {
+  const { state } = useContext(Context);
+  const blogPost = state.find(
+    (blogPost) => blogPost.id === navigation.getParam('id')
+  ); //like a sql
   return (
-    <View>
-      <Text>Edit</Text>
-    </View>
+    <BlogPostForm
+      inintialValues={{ title: blogPost.title, content: blogPost.content }}
+      onSubmit={(title, content) => {
+        console.log(title, content);
+      }}
+    />
   );
 };
 
